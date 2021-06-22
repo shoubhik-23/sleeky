@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Typography, Button } from "@material-ui/core";
+import { Box, Grid, Paper } from "@material-ui/core";
 import withWidth from "@material-ui/core/withWidth";
 import React, { useEffect, useState } from "react";
 import moment from "moment";
@@ -8,7 +8,6 @@ import Logo from "../assets/images/logo.png";
 import Header from "../header/header";
 import { style } from "../../components/style";
 import Sidebar from "../sidebar/sidebar";
-import clsx from "clsx";
 
 function Layout(props) {
   const classes = style();
@@ -45,7 +44,7 @@ function Layout(props) {
           </Grid>
         </Grid>
 
-        <Grid item container xs={12} style={{ height: "80vh" }}>
+        <Grid item container xs={12} className={classes.sidebarDiv}>
           <Grid item xs={3} md={1} className={classes.sidebar}>
             <Sidebar onClickButtonHandler={onClickButtonHandler}></Sidebar>
           </Grid>
@@ -61,18 +60,8 @@ function Layout(props) {
           </Grid>
         </Grid>
 
-        <Grid
-          item
-          container
-          xs={12}
-          style={{ position: "absolute", bottom: 0, height: "10vh" }}
-        >
-          <Grid
-            item
-            xs={3}
-            md={1}
-            style={{ backgroundColor: "#ffffb3" }}
-          ></Grid>
+        <Grid item container xs={12} className={classes.bottom}>
+          <Grid item xs={3} md={1} className={classes.blue}></Grid>
           <Grid item xs={9} md={11} className={classes.footer}>
             <Footer data={clickedTimingArray.length}></Footer>
           </Grid>

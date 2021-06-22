@@ -1,15 +1,14 @@
 import { Typography } from "@material-ui/core";
 import { Box } from "@material-ui/core";
-import moment from "moment";
+import { style } from "../../components/style";
 import React from "react";
 
 function Content(props) {
+  const classes = style();
   return (
-    <Box style={{}}>
+    <Box>
       {props.data.map((el) => (
-        <Typography style={{ fontSize: 18, paddingTop: 20 }}>
-          You clicked at {el}
-        </Typography>
+        <Typography className={classes.font18}>You clicked at {el}</Typography>
       ))}
     </Box>
   );
