@@ -5,8 +5,12 @@ import moment from "moment";
 import Content from "../content/content";
 import Footer from "../footer/footer";
 import Logo from "../assets/images/logo.png";
+import Header from "../header/header";
+import { style } from "../../components/style";
+import clsx from "clsx";
 
 function Layout(props) {
+  const classes = style();
   const [timer, setTimer] = useState(new Date());
   const [clickedTimingArray, setClickedTimingArray] = useState([]);
   useEffect(() => {
@@ -35,8 +39,17 @@ function Layout(props) {
                   height: "10vh",
                 }}
               >
-                <Grid item xs={2}>
-                  <Box>
+                <Grid
+                  item
+                  xs={3}
+                  md={1}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Box style={{ width: "80%", height: 50 }}>
                     <img
                       style={{ width: "100%", height: "100%" }}
                       src={Logo}
@@ -46,22 +59,15 @@ function Layout(props) {
                 </Grid>
                 <Grid
                   item
-                  xs={10}
+                  xs={9}
+                  md={11}
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
                     alignItems: "center",
                   }}
                 >
-                  <Typography
-                    style={{
-                      fontSize: 20,
-                      fontWeight: 600,
-                      marginRight: "2rem",
-                    }}
-                  >
-                    Current Time is : {moment(timer).format("hh:mm:ss")}
-                  </Typography>
+                  <Header timer={timer}></Header>
                 </Grid>
               </Grid>
             </Paper>

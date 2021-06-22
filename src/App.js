@@ -3,11 +3,7 @@ import Layout from "./components/layout/layout";
 import "@fontsource/roboto";
 
 function App() {
-  return (
-    <div>
-      <Layout></Layout>
-    </div>
-  );
+  return <Layout></Layout>;
 }
 
 export default App;
