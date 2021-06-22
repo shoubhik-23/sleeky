@@ -7,6 +7,7 @@ import Footer from "../footer/footer";
 import Logo from "../assets/images/logo.png";
 import Header from "../header/header";
 import { style } from "../../components/style";
+import Sidebar from "../sidebar/sidebar";
 import clsx from "clsx";
 
 function Layout(props) {
@@ -25,48 +26,18 @@ function Layout(props) {
   };
 
   return (
-    <Box style={{ height: "100vh", position: "relative" }}>
+    <Box className={classes.main}>
       <Grid container>
         <Grid item container xs={12}>
           <Grid item xs={12}>
-            <Paper elevation={4}>
-              <Grid
-                item
-                container
-                xs={12}
-                style={{
-                  backgroundColor: "#ccffcc",
-                  height: "10vh",
-                }}
-              >
-                <Grid
-                  item
-                  xs={3}
-                  md={1}
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Box style={{ width: "80%", height: 50 }}>
-                    <img
-                      style={{ width: "100%", height: "100%" }}
-                      src={Logo}
-                      alt="logo"
-                    ></img>
+            <Paper elevation={5}>
+              <Grid item container xs={12} className={classes.paper}>
+                <Grid item xs={3} md={1} className={classes.justify}>
+                  <Box className={classes.imageBox}>
+                    <img className={classes.image} src={Logo} alt="logo"></img>
                   </Box>
                 </Grid>
-                <Grid
-                  item
-                  xs={9}
-                  md={11}
-                  style={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    alignItems: "center",
-                  }}
-                >
+                <Grid item xs={9} md={11} className={classes.justEnd}>
                   <Header timer={timer}></Header>
                 </Grid>
               </Grid>
@@ -75,35 +46,16 @@ function Layout(props) {
         </Grid>
 
         <Grid item container xs={12} style={{ height: "80vh" }}>
-          <Grid item xs={3} md={1} style={{ backgroundColor: "#ffffb3" }}>
-            <Box
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: 80,
-              }}
-            >
-              <Button
-                color="primary"
-                variant="contained"
-                onClick={onClickButtonHandler}
-              >
-                Click Here
-              </Button>
-            </Box>
+          <Grid item xs={3} md={1} className={classes.sidebar}>
+            <Sidebar onClickButtonHandler={onClickButtonHandler}></Sidebar>
           </Grid>
 
           <Grid
             item
             xs={9}
             md={11}
-            style={{
-              display: "flex",
-
-              maxHeight: "80vh",
-              paddingLeft: props.width === "xs" ? "20px" : "40px",
-              overflowY: "auto",
-            }}
+            style={{ paddingLeft: props.width === "xs" ? "20px" : "40px" }}
+            className={classes.content}
           >
             <Content data={clickedTimingArray}></Content>
           </Grid>
@@ -121,17 +73,7 @@ function Layout(props) {
             md={1}
             style={{ backgroundColor: "#ffffb3" }}
           ></Grid>
-          <Grid
-            item
-            xs={9}
-            md={11}
-            style={{
-              backgroundColor: "#b3e6ff",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <Grid item xs={9} md={11} className={classes.footer}>
             <Footer data={clickedTimingArray.length}></Footer>
           </Grid>
         </Grid>
